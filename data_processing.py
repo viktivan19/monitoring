@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from config import *  # noqa
+from validation import check_missing_values
 
 logging.basicConfig(level=logging.INFO)
 
@@ -20,6 +21,8 @@ def get_data() -> pd.DataFrame:
     logging.info("Reading the data...")
 
     df = pd.read_csv("./data/marketing_campaign.csv", sep='\t', parse_dates=[DOB, CUSTOMER_SINCE])
+
+    check_missing_values(df)
 
     return df
 
