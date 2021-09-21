@@ -22,7 +22,7 @@ def get_square(number):
     return result
 
 
-print(get_square(5))
+get_square(5)
 
 
 # Step 3: Passing functions as arguments to other functions
@@ -30,28 +30,33 @@ def square(number):
     return number * number
 
 
-def call_function(function):
+def square_five(function):
     number_to_square = 5
     return function(number_to_square)
 
 
-print(call_function(square))
+square_five(square)
 
 
 # Step 4: Functions returning other functions
-def print_something():
-    def print_five():
-        return print("Five")
+def return_something():
+    def return_five():
+        return "Five"
 
-    return print_five
+    return return_five
 
 
-print_it = print_something()
+get_it = return_something()
 
-print_it()
+get_it()
 
 
 """Creating a decorator"""
+
+
+# Write a function that you will want to decorate
+def say_five():
+    return "Five"
 
 
 # Now we can create a decorator
@@ -64,23 +69,13 @@ def decorator_one(function):
     return _wrapper
 
 
-# Write a function that you will want to decorate
-def say_five():
-    return "Five"
-
-
-# One way to use the decorator
-decorate = decorator_one(say_five)
-print(decorate())
-
-
 # Pythonic way to decorate the function
 @decorator_one
 def say_five():
     return "Five"
 
 
-print(say_five())
+say_five()
 
 
 # Accepting arguments in decorator functions

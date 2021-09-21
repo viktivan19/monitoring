@@ -13,14 +13,15 @@ logging.basicConfig(level=logging.INFO)
 
 def get_data() -> pd.DataFrame:
     """
-    Reading the raw data in.
+    Reading the raw data from the /data folder.
     
     Return:
          raw data frame
     """
     logging.info("Reading the data...")
 
-    df = pd.read_csv("./data/marketing_campaign.csv", sep='\t', parse_dates=[DOB, CUSTOMER_SINCE])
+    df = pd.read_csv("./data/marketing_campaign.csv",
+                     sep='\t', parse_dates=[DOB, CUSTOMER_SINCE])
 
     check_missing_values(df)
 
@@ -100,3 +101,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
